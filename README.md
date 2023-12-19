@@ -54,4 +54,6 @@ Codes: {'H': ' 00', 'E': ' 01', 'O': ' 10', 'L': ' 11'}
 Huffman Tree has been drawn and saved as 'huffman_tree.png'
 ```
 
-![png](huffman_tree.png)
+<p align="center">
+    <img src="huffman_tree.png" alt="Huffman Tree Visualization">
+</p>
