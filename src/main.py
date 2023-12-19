@@ -1,12 +1,14 @@
 from collections import Counter, defaultdict
 from graphviz import Digraph
 
+
 class HuffmanNode:
     def __init__(self, char, freq):
         self.char = char
         self.freq = freq
         self.left = None
         self.right = None
+
 
 def huffman_encoding(text):
     freq_count = Counter(text)
@@ -28,12 +30,14 @@ def huffman_encoding(text):
     encoded_text = "".join(codes[char] for char in text)
     return encoded_text, dict(codes), root
 
+
 def assign_codes(node, code, codes):
     if node:
         if node.char:
             codes[node.char] = code
         assign_codes(node.left, code + "0", codes)
         assign_codes(node.right, code + "1", codes)
+
 
 def create_dot(node, dot=None):
     if dot is None:
@@ -53,7 +57,17 @@ def create_dot(node, dot=None):
             create_dot(node.right, dot)
     return dot
 
+
+def is_valid_input(text):
+    return any(c.isalpha() for c in text)
+
+
 text_input = input("Enter the text you want to encode: ").replace(' ', '_')
+
+while not is_valid_input(text_input):
+    print("Invalid input! Please enter a text")
+    text_input = input("Enter the text you want to encode: ")
+
 encoded_text, codes, root = huffman_encoding(text_input)
 
 print("Encoded text:", encoded_text)
